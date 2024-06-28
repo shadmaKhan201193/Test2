@@ -1,0 +1,433 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<definitions id="Definition"
+             targetNamespace="http://www.jboss.org/drools"
+             typeLanguage="http://www.java.com/javaTypes"
+             expressionLanguage="http://www.mvel.org/2.0"
+             xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd"
+             xmlns:g="http://www.jboss.org/drools/flow/gpd"
+             xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+             xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
+             xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
+             xmlns:tns="http://www.jboss.org/drools">
+
+  <itemDefinition id="null" />
+
+  <process processType="Private" isExecutable="true" id="procurement.Procurement" name="Sample Process" tns:packageName="defaultPackage" tns:version="1.0" >
+
+    <!-- process variables -->
+    <property id="selfprocure" itemSubjectRef="null"/>
+    <property id="managerApro" itemSubjectRef="null"/>
+    <property id="senManagAppro" itemSubjectRef="null"/>
+    <property id="hrBudget" itemSubjectRef="null"/>
+    <property id="procuTeamAppro" itemSubjectRef="null"/>
+    <property id="procured" itemSubjectRef="null"/>
+
+    <!-- nodes -->
+    <startEvent id="_1"  isInterrupting="true"/>
+    <userTask id="_jbpm-unique-2" name="Procurement" >
+      <ioSpecification>
+        <dataInput id="_jbpm-unique-2_TaskNameInput" name="TaskName" />
+        <dataInput id="_jbpm-unique-2_NodeNameInput" name="NodeName" />
+        <dataInput id="_jbpm-unique-2_SkippableInput" name="Skippable" />
+        <dataInput id="_jbpm-unique-2_GroupIdInput" name="GroupId" />
+        <dataOutput id="_jbpm-unique-2_selfprocureOutput" name="selfprocure" />
+        <inputSet>
+          <dataInputRefs>_jbpm-unique-2_TaskNameInput</dataInputRefs>
+          <dataInputRefs>_jbpm-unique-2_NodeNameInput</dataInputRefs>
+          <dataInputRefs>_jbpm-unique-2_SkippableInput</dataInputRefs>
+          <dataInputRefs>_jbpm-unique-2_GroupIdInput</dataInputRefs>
+        </inputSet>
+        <outputSet>
+          <dataOutputRefs>_jbpm-unique-2_selfprocureOutput</dataOutputRefs>
+        </outputSet>
+      </ioSpecification>
+      <dataInputAssociation>
+        <targetRef>_jbpm-unique-2_TaskNameInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression">Task</from>
+          <to xsi:type="tFormalExpression">_jbpm-unique-2_TaskNameInput</to>
+        </assignment>
+      </dataInputAssociation>
+      <dataInputAssociation>
+        <targetRef>_jbpm-unique-2_NodeNameInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression">Procurement</from>
+          <to xsi:type="tFormalExpression">_jbpm-unique-2_NodeNameInput</to>
+        </assignment>
+      </dataInputAssociation>
+      <dataInputAssociation>
+        <targetRef>_jbpm-unique-2_SkippableInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression">false</from>
+          <to xsi:type="tFormalExpression">_jbpm-unique-2_SkippableInput</to>
+        </assignment>
+      </dataInputAssociation>
+      <dataInputAssociation>
+        <targetRef>_jbpm-unique-2_GroupIdInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression">P</from>
+          <to xsi:type="tFormalExpression">_jbpm-unique-2_GroupIdInput</to>
+        </assignment>
+      </dataInputAssociation>
+      <dataOutputAssociation>
+        <sourceRef>_jbpm-unique-2_selfprocureOutput</sourceRef>
+        <targetRef>selfprocure</targetRef>
+      </dataOutputAssociation>
+      <potentialOwner>
+        <resourceAssignmentExpression>
+          <formalExpression>#{device}</formalExpression>
+        </resourceAssignmentExpression>
+      </potentialOwner>
+    </userTask>
+    <userTask id="_jbpm-unique-3" name="Manager Approval" >
+      <ioSpecification>
+        <dataInput id="_jbpm-unique-3_TaskNameInput" name="TaskName" />
+        <dataInput id="_jbpm-unique-3_NodeNameInput" name="NodeName" />
+        <dataInput id="_jbpm-unique-3_SkippableInput" name="Skippable" />
+        <dataInput id="_jbpm-unique-3_GroupIdInput" name="GroupId" />
+        <dataOutput id="_jbpm-unique-3_managerAproOutput" name="managerApro" />
+        <inputSet>
+          <dataInputRefs>_jbpm-unique-3_TaskNameInput</dataInputRefs>
+          <dataInputRefs>_jbpm-unique-3_NodeNameInput</dataInputRefs>
+          <dataInputRefs>_jbpm-unique-3_SkippableInput</dataInputRefs>
+          <dataInputRefs>_jbpm-unique-3_GroupIdInput</dataInputRefs>
+        </inputSet>
+        <outputSet>
+          <dataOutputRefs>_jbpm-unique-3_managerAproOutput</dataOutputRefs>
+        </outputSet>
+      </ioSpecification>
+      <dataInputAssociation>
+        <targetRef>_jbpm-unique-3_TaskNameInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression">Task</from>
+          <to xsi:type="tFormalExpression">_jbpm-unique-3_TaskNameInput</to>
+        </assignment>
+      </dataInputAssociation>
+      <dataInputAssociation>
+        <targetRef>_jbpm-unique-3_NodeNameInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression">Manager Approval</from>
+          <to xsi:type="tFormalExpression">_jbpm-unique-3_NodeNameInput</to>
+        </assignment>
+      </dataInputAssociation>
+      <dataInputAssociation>
+        <targetRef>_jbpm-unique-3_SkippableInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression">false</from>
+          <to xsi:type="tFormalExpression">_jbpm-unique-3_SkippableInput</to>
+        </assignment>
+      </dataInputAssociation>
+      <dataInputAssociation>
+        <targetRef>_jbpm-unique-3_GroupIdInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression">MA</from>
+          <to xsi:type="tFormalExpression">_jbpm-unique-3_GroupIdInput</to>
+        </assignment>
+      </dataInputAssociation>
+      <dataOutputAssociation>
+        <sourceRef>_jbpm-unique-3_managerAproOutput</sourceRef>
+        <targetRef>managerApro</targetRef>
+      </dataOutputAssociation>
+    </userTask>
+    <userTask id="_jbpm-unique-4" name="SeniorManagerApp" >
+      <ioSpecification>
+        <dataInput id="_jbpm-unique-4_TaskNameInput" name="TaskName" />
+        <dataInput id="_jbpm-unique-4_NodeNameInput" name="NodeName" />
+        <dataInput id="_jbpm-unique-4_SkippableInput" name="Skippable" />
+        <dataInput id="_jbpm-unique-4_GroupIdInput" name="GroupId" />
+        <dataOutput id="_jbpm-unique-4_senManagApproOutput" name="senManagAppro" />
+        <inputSet>
+          <dataInputRefs>_jbpm-unique-4_TaskNameInput</dataInputRefs>
+          <dataInputRefs>_jbpm-unique-4_NodeNameInput</dataInputRefs>
+          <dataInputRefs>_jbpm-unique-4_SkippableInput</dataInputRefs>
+          <dataInputRefs>_jbpm-unique-4_GroupIdInput</dataInputRefs>
+        </inputSet>
+        <outputSet>
+          <dataOutputRefs>_jbpm-unique-4_senManagApproOutput</dataOutputRefs>
+        </outputSet>
+      </ioSpecification>
+      <dataInputAssociation>
+        <targetRef>_jbpm-unique-4_TaskNameInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression">Task</from>
+          <to xsi:type="tFormalExpression">_jbpm-unique-4_TaskNameInput</to>
+        </assignment>
+      </dataInputAssociation>
+      <dataInputAssociation>
+        <targetRef>_jbpm-unique-4_NodeNameInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression">SeniorManagerApp</from>
+          <to xsi:type="tFormalExpression">_jbpm-unique-4_NodeNameInput</to>
+        </assignment>
+      </dataInputAssociation>
+      <dataInputAssociation>
+        <targetRef>_jbpm-unique-4_SkippableInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression">false</from>
+          <to xsi:type="tFormalExpression">_jbpm-unique-4_SkippableInput</to>
+        </assignment>
+      </dataInputAssociation>
+      <dataInputAssociation>
+        <targetRef>_jbpm-unique-4_GroupIdInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression">SMA</from>
+          <to xsi:type="tFormalExpression">_jbpm-unique-4_GroupIdInput</to>
+        </assignment>
+      </dataInputAssociation>
+      <dataOutputAssociation>
+        <sourceRef>_jbpm-unique-4_senManagApproOutput</sourceRef>
+        <targetRef>senManagAppro</targetRef>
+      </dataOutputAssociation>
+    </userTask>
+    <userTask id="_jbpm-unique-5" name="Hr budget" >
+      <ioSpecification>
+        <dataInput id="_jbpm-unique-5_TaskNameInput" name="TaskName" />
+        <dataInput id="_jbpm-unique-5_NodeNameInput" name="NodeName" />
+        <dataInput id="_jbpm-unique-5_SkippableInput" name="Skippable" />
+        <dataInput id="_jbpm-unique-5_GroupIdInput" name="GroupId" />
+        <dataOutput id="_jbpm-unique-5_hrBudgetOutput" name="hrBudget" />
+        <inputSet>
+          <dataInputRefs>_jbpm-unique-5_TaskNameInput</dataInputRefs>
+          <dataInputRefs>_jbpm-unique-5_NodeNameInput</dataInputRefs>
+          <dataInputRefs>_jbpm-unique-5_SkippableInput</dataInputRefs>
+          <dataInputRefs>_jbpm-unique-5_GroupIdInput</dataInputRefs>
+        </inputSet>
+        <outputSet>
+          <dataOutputRefs>_jbpm-unique-5_hrBudgetOutput</dataOutputRefs>
+        </outputSet>
+      </ioSpecification>
+      <dataInputAssociation>
+        <targetRef>_jbpm-unique-5_TaskNameInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression">Task</from>
+          <to xsi:type="tFormalExpression">_jbpm-unique-5_TaskNameInput</to>
+        </assignment>
+      </dataInputAssociation>
+      <dataInputAssociation>
+        <targetRef>_jbpm-unique-5_NodeNameInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression">Hr budget</from>
+          <to xsi:type="tFormalExpression">_jbpm-unique-5_NodeNameInput</to>
+        </assignment>
+      </dataInputAssociation>
+      <dataInputAssociation>
+        <targetRef>_jbpm-unique-5_SkippableInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression">false</from>
+          <to xsi:type="tFormalExpression">_jbpm-unique-5_SkippableInput</to>
+        </assignment>
+      </dataInputAssociation>
+      <dataInputAssociation>
+        <targetRef>_jbpm-unique-5_GroupIdInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression">Hr</from>
+          <to xsi:type="tFormalExpression">_jbpm-unique-5_GroupIdInput</to>
+        </assignment>
+      </dataInputAssociation>
+      <dataOutputAssociation>
+        <sourceRef>_jbpm-unique-5_hrBudgetOutput</sourceRef>
+        <targetRef>hrBudget</targetRef>
+      </dataOutputAssociation>
+    </userTask>
+    <userTask id="_jbpm-unique-13" name="Procured" >
+      <ioSpecification>
+        <dataInput id="_jbpm-unique-13_TaskNameInput" name="TaskName" />
+        <dataInput id="_jbpm-unique-13_NodeNameInput" name="NodeName" />
+        <dataInput id="_jbpm-unique-13_SkippableInput" name="Skippable" />
+        <dataInput id="_jbpm-unique-13_GroupIdInput" name="GroupId" />
+        <dataOutput id="_jbpm-unique-13_procuredOutput" name="procured" />
+        <inputSet>
+          <dataInputRefs>_jbpm-unique-13_TaskNameInput</dataInputRefs>
+          <dataInputRefs>_jbpm-unique-13_NodeNameInput</dataInputRefs>
+          <dataInputRefs>_jbpm-unique-13_SkippableInput</dataInputRefs>
+          <dataInputRefs>_jbpm-unique-13_GroupIdInput</dataInputRefs>
+        </inputSet>
+        <outputSet>
+          <dataOutputRefs>_jbpm-unique-13_procuredOutput</dataOutputRefs>
+        </outputSet>
+      </ioSpecification>
+      <dataInputAssociation>
+        <targetRef>_jbpm-unique-13_TaskNameInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression">Task</from>
+          <to xsi:type="tFormalExpression">_jbpm-unique-13_TaskNameInput</to>
+        </assignment>
+      </dataInputAssociation>
+      <dataInputAssociation>
+        <targetRef>_jbpm-unique-13_NodeNameInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression">Procured</from>
+          <to xsi:type="tFormalExpression">_jbpm-unique-13_NodeNameInput</to>
+        </assignment>
+      </dataInputAssociation>
+      <dataInputAssociation>
+        <targetRef>_jbpm-unique-13_SkippableInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression">false</from>
+          <to xsi:type="tFormalExpression">_jbpm-unique-13_SkippableInput</to>
+        </assignment>
+      </dataInputAssociation>
+      <dataInputAssociation>
+        <targetRef>_jbpm-unique-13_GroupIdInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression">Pro</from>
+          <to xsi:type="tFormalExpression">_jbpm-unique-13_GroupIdInput</to>
+        </assignment>
+      </dataInputAssociation>
+      <dataOutputAssociation>
+        <sourceRef>_jbpm-unique-13_procuredOutput</sourceRef>
+        <targetRef>procured</targetRef>
+      </dataOutputAssociation>
+    </userTask>
+    <endEvent id="_jbpm-unique-14" name="End" >
+        <terminateEventDefinition />
+    </endEvent>
+    <userTask id="_jbpm-unique-25" name="ProcureTeam Approval" >
+      <ioSpecification>
+        <dataInput id="_jbpm-unique-25_TaskNameInput" name="TaskName" />
+        <dataInput id="_jbpm-unique-25_NodeNameInput" name="NodeName" />
+        <dataInput id="_jbpm-unique-25_SkippableInput" name="Skippable" />
+        <dataInput id="_jbpm-unique-25_GroupIdInput" name="GroupId" />
+        <dataOutput id="_jbpm-unique-25_procuTeamApproOutput" name="procuTeamAppro" />
+        <inputSet>
+          <dataInputRefs>_jbpm-unique-25_TaskNameInput</dataInputRefs>
+          <dataInputRefs>_jbpm-unique-25_NodeNameInput</dataInputRefs>
+          <dataInputRefs>_jbpm-unique-25_SkippableInput</dataInputRefs>
+          <dataInputRefs>_jbpm-unique-25_GroupIdInput</dataInputRefs>
+        </inputSet>
+        <outputSet>
+          <dataOutputRefs>_jbpm-unique-25_procuTeamApproOutput</dataOutputRefs>
+        </outputSet>
+      </ioSpecification>
+      <dataInputAssociation>
+        <targetRef>_jbpm-unique-25_TaskNameInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression">Task</from>
+          <to xsi:type="tFormalExpression">_jbpm-unique-25_TaskNameInput</to>
+        </assignment>
+      </dataInputAssociation>
+      <dataInputAssociation>
+        <targetRef>_jbpm-unique-25_NodeNameInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression">ProcureTeam Approval</from>
+          <to xsi:type="tFormalExpression">_jbpm-unique-25_NodeNameInput</to>
+        </assignment>
+      </dataInputAssociation>
+      <dataInputAssociation>
+        <targetRef>_jbpm-unique-25_SkippableInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression">false</from>
+          <to xsi:type="tFormalExpression">_jbpm-unique-25_SkippableInput</to>
+        </assignment>
+      </dataInputAssociation>
+      <dataInputAssociation>
+        <targetRef>_jbpm-unique-25_GroupIdInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression">TA</from>
+          <to xsi:type="tFormalExpression">_jbpm-unique-25_GroupIdInput</to>
+        </assignment>
+      </dataInputAssociation>
+      <dataOutputAssociation>
+        <sourceRef>_jbpm-unique-25_procuTeamApproOutput</sourceRef>
+        <targetRef>procuTeamAppro</targetRef>
+      </dataOutputAssociation>
+    </userTask>
+    <parallelGateway id="_jbpm-unique-27" name="Gateway" gatewayDirection="Diverging" />
+    <parallelGateway id="_jbpm-unique-28" name="Gateway" gatewayDirection="Converging" />
+
+    <!-- connections -->
+    <sequenceFlow id="_1-_jbpm-unique-2" sourceRef="_1" targetRef="_jbpm-unique-2" />
+    <sequenceFlow id="_jbpm-unique-2-_jbpm-unique-3" sourceRef="_jbpm-unique-2" targetRef="_jbpm-unique-3" />
+    <sequenceFlow id="_jbpm-unique-3-_jbpm-unique-4" sourceRef="_jbpm-unique-3" targetRef="_jbpm-unique-4" />
+    <sequenceFlow id="_jbpm-unique-27-_jbpm-unique-5" sourceRef="_jbpm-unique-27" targetRef="_jbpm-unique-5" />
+    <sequenceFlow id="_jbpm-unique-28-_jbpm-unique-13" sourceRef="_jbpm-unique-28" targetRef="_jbpm-unique-13" />
+    <sequenceFlow id="_jbpm-unique-13-_jbpm-unique-14" sourceRef="_jbpm-unique-13" targetRef="_jbpm-unique-14" />
+    <sequenceFlow id="_jbpm-unique-27-_jbpm-unique-25" sourceRef="_jbpm-unique-27" targetRef="_jbpm-unique-25" />
+    <sequenceFlow id="_jbpm-unique-4-_jbpm-unique-27" sourceRef="_jbpm-unique-4" targetRef="_jbpm-unique-27" />
+    <sequenceFlow id="_jbpm-unique-5-_jbpm-unique-28" sourceRef="_jbpm-unique-5" targetRef="_jbpm-unique-28" />
+    <sequenceFlow id="_jbpm-unique-25-_jbpm-unique-28" sourceRef="_jbpm-unique-25" targetRef="_jbpm-unique-28" />
+
+  </process>
+
+  <bpmndi:BPMNDiagram>
+    <bpmndi:BPMNPlane bpmnElement="procurement.Procurement" >
+      <bpmndi:BPMNShape bpmnElement="_1" >
+        <dc:Bounds x="5" y="164" width="48" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_jbpm-unique-2" >
+        <dc:Bounds x="74" y="137" width="89" height="93" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_jbpm-unique-3" >
+        <dc:Bounds x="203" y="135" width="107" height="97" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_jbpm-unique-4" >
+        <dc:Bounds x="340" y="132" width="92" height="106" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_jbpm-unique-5" >
+        <dc:Bounds x="532" y="49" width="97" height="97" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_jbpm-unique-13" >
+        <dc:Bounds x="763" y="143" width="76" height="75" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_jbpm-unique-14" >
+        <dc:Bounds x="859" y="150" width="48" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_jbpm-unique-25" >
+        <dc:Bounds x="554" y="228" width="100" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_jbpm-unique-27" >
+        <dc:Bounds x="461" y="152" width="48" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_jbpm-unique-28" >
+        <dc:Bounds x="674" y="148" width="48" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="_1-_jbpm-unique-2" >
+        <di:waypoint x="29" y="188" />
+        <di:waypoint x="118" y="183" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_jbpm-unique-2-_jbpm-unique-3" >
+        <di:waypoint x="118" y="183" />
+        <di:waypoint x="256" y="183" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_jbpm-unique-3-_jbpm-unique-4" >
+        <di:waypoint x="256" y="183" />
+        <di:waypoint x="386" y="185" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_jbpm-unique-27-_jbpm-unique-5" >
+        <di:waypoint x="485" y="176" />
+        <di:waypoint x="487" y="112" />
+        <di:waypoint x="580" y="97" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_jbpm-unique-28-_jbpm-unique-13" >
+        <di:waypoint x="698" y="172" />
+        <di:waypoint x="801" y="180" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_jbpm-unique-13-_jbpm-unique-14" >
+        <di:waypoint x="801" y="180" />
+        <di:waypoint x="883" y="174" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_jbpm-unique-27-_jbpm-unique-25" >
+        <di:waypoint x="485" y="176" />
+        <di:waypoint x="490" y="251" />
+        <di:waypoint x="604" y="252" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_jbpm-unique-4-_jbpm-unique-27" >
+        <di:waypoint x="386" y="185" />
+        <di:waypoint x="485" y="176" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_jbpm-unique-5-_jbpm-unique-28" >
+        <di:waypoint x="580" y="97" />
+        <di:waypoint x="704" y="98" />
+        <di:waypoint x="698" y="172" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_jbpm-unique-25-_jbpm-unique-28" >
+        <di:waypoint x="604" y="252" />
+        <di:waypoint x="702" y="244" />
+        <di:waypoint x="698" y="172" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+
+</definitions>
