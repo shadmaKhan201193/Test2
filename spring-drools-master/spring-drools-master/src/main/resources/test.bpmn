@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<definitions id="Definition"
+             targetNamespace="http://www.jboss.org/drools"
+             typeLanguage="http://www.java.com/javaTypes"
+             expressionLanguage="http://www.mvel.org/2.0"
+             xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd"
+             xmlns:g="http://www.jboss.org/drools/flow/gpd"
+             xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+             xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
+             xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
+             xmlns:tns="http://www.jboss.org/drools">
+
+  <process processType="Private" isExecutable="true" id="com.sample.bpmn" name="Sample Process" tns:packageName="defaultPackage" >
+
+    <!-- nodes -->
+    <startEvent id="_1"  isInterrupting="true"/>
+    <endEvent id="_jbpm-unique-16" name="End" >
+        <terminateEventDefinition />
+    </endEvent>
+    <scriptTask id="_jbpm-unique-23" name="Demo" scriptFormat="http://www.java.com/java" >
+      <script>System.out.println("hi  i am here  a very new for jbpm");</script>
+    </scriptTask>
+
+    <!-- connections -->
+    <sequenceFlow id="_jbpm-unique-23-_jbpm-unique-16" sourceRef="_jbpm-unique-23" targetRef="_jbpm-unique-16" />
+    <sequenceFlow id="_1-_jbpm-unique-23" sourceRef="_1" targetRef="_jbpm-unique-23" />
+
+  </process>
+
+  <bpmndi:BPMNDiagram>
+    <bpmndi:BPMNPlane bpmnElement="com.sample.bpmn" >
+      <bpmndi:BPMNShape bpmnElement="_1" >
+        <dc:Bounds x="39" y="39" width="48" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_jbpm-unique-16" >
+        <dc:Bounds x="493" y="47" width="48" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_jbpm-unique-23" >
+        <dc:Bounds x="201" y="65" width="153" height="28" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="_jbpm-unique-23-_jbpm-unique-16" >
+        <di:waypoint x="277" y="79" />
+        <di:waypoint x="517" y="71" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_1-_jbpm-unique-23" >
+        <di:waypoint x="63" y="63" />
+        <di:waypoint x="277" y="79" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+
+</definitions>
