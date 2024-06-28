@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<DataTools.ServerProfiles version="1.0">
+<profile autoconnect="No" desc="" id="c6d7dc61-9d0c-11e2-9996-ccdd5d717b63" name="sa" providerID="org.eclipse.birt.report.data.oda.jdbc">
+<baseproperties>
+<property name="odaURL" value="jdbc:sqlserver://ITLSER047V1;database=FINAIROCBSQA;integratedSecurity=false"/>
+<property name="odaDriverClass" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>
+<property name="odaPassword" value="sqlserver#1234"/>
+<property name="odaUser" value="sa"/>
+<property name="contentBidiFormatStr" value="ILYNN"/>
+<property name="metadataBidiFormatStr" value="ILYNN"/>
+</baseproperties>
+</profile>
+</DataTools.ServerProfiles>
